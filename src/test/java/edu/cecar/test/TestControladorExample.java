@@ -9,6 +9,7 @@ import edu.cecar.controladores.ControladorExample;
 import edu.cecar.modelos.Empleado;
 import edu.cecar.modelos.Example;
 import java.sql.SQLException;
+import java.util.Comparator;
 import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,8 +26,19 @@ public class TestControladorExample {
             ControladorExample controladorExample =
                     new ControladorExample();
             TreeSet<Example> examples =
-                    controladorExample.consultarEmpleados();
-        
+                    controladorExample.
+                            consultarEmpleados();
+            
+            examples.stream().filter(
+                e -> 
+                    e.getGender().equals("F")
+            ).sorted(Comparator.comparing(Example::getDate_of_stop).reversed()).
+                    forEach(e -> 
+                    System.out.println("Date" +
+                    e.getDate_of_stop() + 
+                    " Gender:" + e.getGender())
+              );
+                    
         
         } catch (SQLException ex) {
             Logger.getLogger(TestControladorExample.class.getName()).log(Level.SEVERE, null, ex);

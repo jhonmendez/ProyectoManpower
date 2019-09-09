@@ -5,20 +5,18 @@
  */
 package edu.cecar.modelos;
 
-import java.sql.Date;
-
 /**
  *
  * @author 92531165
  */
-public class Example {
+public class Example implements  Comparable<Example>{
     
-    private Date date_of_stop;
+    private String date_of_stop;
     private String fatal;
     private String alcohol;
     private String gender;
 
-    public Example(Date date_of_stop, String fatal, 
+    public Example(String date_of_stop, String fatal, 
             String alcohol, String gender) {
         
         this.date_of_stop = date_of_stop;
@@ -27,11 +25,11 @@ public class Example {
         this.gender = gender;
     }
 
-    public Date getDate_of_stop() {
+    public String getDate_of_stop() {
         return date_of_stop;
     }
 
-    public void setDate_of_stop(Date date_of_stop) {
+    public void setDate_of_stop(String date_of_stop) {
         this.date_of_stop = date_of_stop;
     }
 
@@ -57,6 +55,13 @@ public class Example {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    @Override
+    public int compareTo(Example o) {
+        
+       return  date_of_stop.compareTo(o.getDate_of_stop());
+        
     }
     
     

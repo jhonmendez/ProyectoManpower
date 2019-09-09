@@ -21,22 +21,23 @@ public class ControladorExample {
     
     public TreeSet<Example> consultarEmpleados() throws SQLException {
         
-        TreeSet<Example> resultado = null;
+        TreeSet<Example> resultado = new TreeSet<>();
         
         //Se recuperan los registros de la tabla
         // examples
            PreparedStatement ps = 
                    getInstance().
                            prepareStatement("Select * "
-                           + "from examples");
+                           + "from examples limit 30");
            
             ResultSet resultSet = 
                     ps.executeQuery();
           
+            
             while (resultSet.next()){
                
                 Example example = new
-                    Example(resultSet.getDate(1), 
+                    Example(resultSet.getString(1), 
                             resultSet.getString(2), 
                             resultSet.getString(3), 
                             resultSet.getString(4));
