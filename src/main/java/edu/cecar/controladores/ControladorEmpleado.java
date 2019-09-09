@@ -13,11 +13,12 @@
  * Copyrigth: CECAR
  */
 package edu.cecar.controladores;
-import edu.cecar.componentes.basesDeDatos.ConectarMySQL;
+import static edu.cecar.componentes.singletons.SingletonConexionBD.getInstance;
 import edu.cecar.modelos.Empleado;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 
 /**
  *
@@ -26,13 +27,6 @@ import java.sql.SQLException;
  */
 public class ControladorEmpleado {
 
-    private final ConectarMySQL conectarMySQL;
-    
-    public ControladorEmpleado(){
-       conectarMySQL = new ConectarMySQL(
-               "127.0.0.1","manpower","root",""
-       );   
-    } 
     
     /**
     * 
@@ -43,7 +37,7 @@ public class ControladorEmpleado {
     public Empleado consultar(String codigo) {
         Empleado e = null;
         try {                    
-            PreparedStatement ps = conectarMySQL.getConnection().prepareStatement(
+            PreparedStatement ps = getInstance().prepareStatement(
                     "select nombres, apellidos, fechaNacimiento from empleados where cedula = ?"
             );
             ps.setString(1, codigo);
@@ -65,7 +59,7 @@ public class ControladorEmpleado {
     **/
     public void guardar(Empleado e){
         try {
-            PreparedStatement ps = conectarMySQL.getConnection().prepareStatement(
+            PreparedStatement ps = getInstance().prepareStatement(
                     "Insert into empleados values (?,?,?,?)"
             );
             ps.setString(1, e.getCodigo());
@@ -87,7 +81,7 @@ public class ControladorEmpleado {
     public Empleado eliminar(String codigo){
         Empleado e = null;
         try {            
-            PreparedStatement ps = conectarMySQL.getConnection().prepareStatement(
+            PreparedStatement ps = getInstance().prepareStatement(
                     "select nombres, apellidos, fechaNacimiento from empleados where cedula=?"
             );
             ps.setString(1, codigo);
@@ -99,7 +93,7 @@ public class ControladorEmpleado {
             if(e==null && e.getCodigo()==null || e.getCodigo().equals("")){
                 System.err.println("El objeto no ha sido creado");
             }else{
-                PreparedStatement ps1 = conectarMySQL.getConnection().prepareStatement(
+                PreparedStatement ps1 = getInstance().prepareStatement(
                         "Delete from empleados where cedula = '"+e.getCodigo()+"'"
                 );
                 ps1.execute();
@@ -121,7 +115,7 @@ public class ControladorEmpleado {
     public Empleado actualizar(String codigo, Empleado a){
         Empleado e = null;
         try {
-            PreparedStatement ps = conectarMySQL.getConnection().prepareStatement(
+            PreparedStatement ps = getInstance().prepareStatement(
                     "select nombres, apellidos, fechaNacimiento from empleados where cedula=?"
             );
             ps.setString(1, codigo);
@@ -133,7 +127,7 @@ public class ControladorEmpleado {
             if(e==null && e.getCodigo()==null || e.getCodigo().equals("")){
                 System.err.println("El objeto no ha sido creado");
             }else{
-                PreparedStatement ps1 = conectarMySQL.getConnection().prepareStatement(
+                PreparedStatement ps1 = getInstance().prepareStatement(
                         "Update empleados set nombres=?, apellidos=?, fechaNacimiento=? where cedula = '"+e.getCodigo()+"'"
                 );               
                 ps1.setString(1, a.getNombres());

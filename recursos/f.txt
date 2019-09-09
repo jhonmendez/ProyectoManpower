@@ -1,0 +1,10 @@
+Cada grupo debe presentar un analisis
+de ventajas y desventajas de su 
+coleccion/Array con respecto a otras
+colecciones especificadas por java.
+
+Vector vs HashMap
+Array vs ArrayList
+HashSet vs HashMap
+HashMap vs ArrayList
+ArrayList vs HashMap

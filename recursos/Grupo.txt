@@ -1,0 +1,31 @@
+Grupo 1: Frank,  
+    Escudero y 
+    eduard (Array)
+
+Grupo 2. Jader, 
+Beltran 
+      y Osnayder. Vector
+
+Grupo 3. Ruiz, 
+Yean, pajaro
+ HashSet
+
+Grupo 4. Rafael, Angelone, Tapia
+
+
+1.
+Subir los datos 
+de la tabla examples 
+en las siguientes 
+estructuras de datos:
+HashMap
+
+Grupo Yonnis, David y carmen
+
+
+* Array
+* Vector
+* HashSet
+* HashMap
+* TreeSet
+

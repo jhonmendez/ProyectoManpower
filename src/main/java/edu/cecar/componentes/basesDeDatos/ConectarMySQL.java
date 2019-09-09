@@ -29,7 +29,9 @@ public class ConectarMySQL {
 	private Connection connection;
 
 
-	public ConectarMySQL(String servidorBD, String nombreBD, String usuario, String password) {
+	public ConectarMySQL(String servidorBD, String nombreBD,
+                            String puerto, String usuario, 
+                            String password) {
 
 		try {
 
@@ -37,7 +39,7 @@ public class ConectarMySQL {
 
 			
 			// Se crea un URL hacia la maquina y la base de datos
-			String url= "jdbc:mysql://" + servidorBD + ":3308/" + nombreBD + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"; 
+			String url= "jdbc:mysql://" + servidorBD + ":" + puerto +"/" + nombreBD + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"; 
 
 			//se crea la conexion a la base de datos
 			connection=DriverManager.getConnection(url,usuario,password);
