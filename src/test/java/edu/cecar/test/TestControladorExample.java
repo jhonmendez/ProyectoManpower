@@ -30,14 +30,22 @@ public class TestControladorExample {
                             consultarEmpleados();
             
             examples.stream().filter(
-                e -> 
-                    e.getGender().equals("F")
-            ).sorted(Comparator.comparing(Example::getDate_of_stop).reversed()).
-                    forEach(e -> 
-                    System.out.println("Date" +
+              
+                    e -> e.getGender().equals("M") &&
+                         e.getFatal().equals("Yes")
+                    
+            ).sorted(
+                    Comparator.
+                            comparing(Example::
+                                    getDate_of_stop)).forEach( e ->
+                                    
+                                     System.out.println("Date" +
                     e.getDate_of_stop() + 
-                    " Gender:" + e.getGender())
-              );
+                    " Gender:" +
+                     e.getGender()));
+                    
+            
+
                     
         
         } catch (SQLException ex) {
@@ -46,4 +54,20 @@ public class TestControladorExample {
         
     }
     
+    
+              /*  examples.stream().filter(
+                e -> 
+                    e.getGender().equals("F") && e.getFatal().e
+            ).sorted(Comparator.comparing(Example::getDate_of_stop).reversed()).
+                    forEach(e -> 
+                    System.out.println("Date" +
+                    e.getDate_of_stop() + 
+                    " Gender:" + e.getGender())
+              */
+    
 }
+
+
+
+
+  
